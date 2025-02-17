@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Atlas",
+    "version": "1.0",
+    "description": "AI Web Agent",
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "permissions": [
+      "activeTab"
+    ],
+    "icons": {
+        "256": "logos/logo.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": [
+          "content.js"
+        ]
+      }
+    ]
+  }
