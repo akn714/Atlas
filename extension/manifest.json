@@ -11,8 +11,10 @@
   },
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "tabs"
   ],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
@@ -37,5 +39,14 @@
         "content.js"
       ]
     }
-  ]
+  ],
+  "commands": {
+      "start-chat": {
+          "suggested_key": {
+              "default": "Ctrl+I",
+              "mac": "Command+I"
+          },
+          "description": "Start chat"
+      }
+  }
 }

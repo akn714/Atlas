@@ -6,6 +6,7 @@ if (!document.getElementById("chat-container")) {
         .then(html => {
             let chatDiv = document.createElement("div");
             chatDiv.innerHTML = html;
+            chatDiv.setAttribute('id', 'chat-div');
             document.body.appendChild(chatDiv);
         });
 

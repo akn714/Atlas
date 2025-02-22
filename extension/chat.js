@@ -9,12 +9,15 @@ document.getElementById("chat-input").addEventListener("keypress", function (eve
 
 function sendMessage() {
     let input = document.getElementById("chat-input");
-    let message = input.value.trim();
-    if (message === "") return;
+    let model = document.getElementById("llm");
+    let query = input.value.trim();
+    let llm = model.value.trim();
+
+    if (query === "") return;
 
     let chatBox = document.getElementById("chat-box");
     let userMessage = document.createElement("div");
-    userMessage.textContent = message;
+    userMessage.textContent = query;
     userMessage.style.background = "#666";
     userMessage.style.padding = "5px";
     userMessage.style.margin = "5px 0";
@@ -27,7 +30,10 @@ function sendMessage() {
     fetch("http://127.0.0.1:3000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: message })
+        body: JSON.stringify({
+            query: query,
+            llm: llm
+        })
     })
         .then(response => response.json())
         .then(data => {
@@ -40,5 +46,5 @@ function sendMessage() {
             chatBox.appendChild(botMessage);
             chatBox.scrollTop = chatBox.scrollHeight;
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error => console.error("Error:", error.error));
 }

@@ -1,48 +1,44 @@
-# from openai import OpenAI
-from dotenv import load_dotenv
-from mistralai import Mistral
 import os
+from dotenv import load_dotenv
+from groq import Groq
+from mistralai import Mistral
 
 load_dotenv()
 
-# OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+class MistralAI:
+    model = "mistral-large-latest"
 
-api_key = os.environ["MISTRAL_API_KEY"]
-model = "mistral-large-latest"
+    def __init__(self):
+        self.client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
 
-client = Mistral(api_key=api_key)
+    def get_llm_response(self, messages):
+        print('[+] Mistral AI responding')
+        response = self.client.chat.complete(
+            model = self.model,
+            messages=messages,
+        )
+        output = response.choices[0].message.content.strip()
 
-messages = [
-    {
-        "role": "system",
-        "content": """
-            Your name is Atlas, a Chrome extension AI agent designed to provide users with short, concise, and precise responses directly within their webpage. Your responses are concise, professional, and efficient, ensuring users receive quick and relevant information without unnecessary elaboration.
+        if output and (output[0] == output[-1]) and output.startswith(("'", '"')):
+            output = output[1:-1]
 
-            Your purpose is to assist users by solving their queries instantly, eliminating the need to open a separate LLM tab. You maintain a neutral and professional tone, focusing on delivering factually accurate and technically sound responses.
+        return output
 
-            Atlas was created by Adarsh Kumar (https://akn714.github.io) to enhance user experience by seamlessly integrating AI assistance into webpages. You strictly adhere to ethical guidelines, ensuring user privacy, accuracy, and responsible AI behavior.
-        """
-    }
-]
+class GroqLLM:
+    model = "llama-3.3-70b-versatile"
 
-# q = input("Enter query: ")
-# limit = input("Enter response limit (definition/concise/normal/extended): ")
+    def __init__(self):
+        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# query = f"""
-# \"query\": \"{q}\"
-# \"response limit\": {500 if limit == 'normal' else 100 if limit == 'concise' else 'define as concise as possible' if limit == 'definition' else 1000}
-# """
+    def get_llm_response(self, messages):
+        print('[+] Groq LLM responding')
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+        )
+        output = response.choices[0].message.content.strip()
 
-# print(query.format(q, limit))
+        if output and (output[0] == output[-1]) and output.startswith(("'", '"')):
+            output = output[1:-1]
 
-chat_response = client.chat.complete(
-    model = model,
-    messages = [
-        {
-            "role": "user",
-            "content": "Who are you and who made you?",
-        },
-    ]
-)
-
-print(chat_response.choices[0].message.content)
+        return output
