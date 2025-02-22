@@ -1,25 +1,41 @@
 {
-    "manifest_version": 3,
-    "name": "Atlas",
-    "version": "1.0",
-    "description": "AI Web Agent",
-    "action": {
-      "default_popup": "popup.html"
+  "manifest_version": 3,
+  "name": "Atlas",
+  "version": "1.0",
+  "description": "AI Web Agent",
+  "action": {
+    "default_icon": {
+      "128": "logos/logo.png"
     },
-    "permissions": [
-      "activeTab"
-    ],
-    "icons": {
-        "256": "logos/logo.png"
-    },
-    "content_scripts": [
-      {
-        "matches": [
-          "<all_urls>"
-        ],
-        "js": [
-          "content.js"
-        ]
-      }
-    ]
-  }
+    "default_title": "Atlas"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "chat.html",
+        "chat.css",
+        "chat.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
