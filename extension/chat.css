@@ -67,7 +67,7 @@ body {
     width: 350px !important;
     background: #111111 !important;
     border-radius: 12px !important;
-    /* box-shadow: 0px 0px 15px rgb(255 0 247 / 50%) !important; */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5) !important;
     overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
@@ -83,8 +83,13 @@ body {
     /* box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2) !important; */
 }
 
+#loading {
+    height: 40px;
+    width: 40px;
+}
+
 #chat-input {
-    width: 100% !important;
+   /* width: 100% !important; */
     padding: 10px !important;
     margin-top: 10px !important;
     background: #33333300 !important;
@@ -99,13 +104,26 @@ body {
     border-color: #ffffffab !important;
 }
 
+#model {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 40px;
+    margin-top: 10px;
+}
+
+#model > p {
+    width: 30%;
+    margin: auto;
+}
+
 #llm {
-    margin-top: 10px !important;
+    /* margin-top: 10px !important; */
     background: #44444400 !important;
     color: white !important;
     border: 1px solid #ffffff73 !important;
     border-radius: 5px !important;
-    padding: 5px !important;
+    padding: 10px !important;
     width: 100% !important;
     outline: none !important;
     transition: 0.3s !important;
@@ -129,7 +147,7 @@ body {
 }
 
 #send-btn:hover {
-    background: #fff !important;
-    color: #111 !important;
-    box-shadow: 0px 0px 15px #0ff !important;
+    background: #7b7b7b !important;
+    /* color: #111 !important; */
+    /* box-shadow: 0px 0px 15px #0ff !important; */
 }
