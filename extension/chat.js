@@ -1,5 +1,7 @@
 console.log('chat.js injected')
 
+document.getElementById("chat-input").focus();
+
 document.getElementById("send-btn").addEventListener("click", sendMessage);
 document.getElementById("chat-input").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
@@ -18,7 +20,8 @@ function sendMessage() {
     let chatBox = document.getElementById("chat-box");
     let userMessage = document.createElement("div");
     userMessage.textContent = query;
-    userMessage.style.background = "#666";
+#    userMessage.style.background = "#666";
+	userMessage.style.color = 'white';
     userMessage.style.padding = "5px";
     userMessage.style.margin = "5px 0";
     userMessage.style.borderRadius = "5px";
@@ -39,12 +42,23 @@ function sendMessage() {
         .then(data => {
             let botMessage = document.createElement("div");
             botMessage.textContent = data.reply || "No response";
-            botMessage.style.background = "#888";
+#            botMessage.style.background = "#888";
+			botMessage.style.color = "#919191";
             botMessage.style.padding = "5px";
             botMessage.style.margin = "5px 0";
             botMessage.style.borderRadius = "5px";
             chatBox.appendChild(botMessage);
             chatBox.scrollTop = chatBox.scrollHeight;
         })
-        .catch(error => console.error("Error:", error.error));
+        .catch(error => {
+            console.error("Error:", error.error);
+            let botMessage = document.createElement("div");
+            botMessage.textContent = "Server error!";
+            botMessage.style.background = "#888";
+            botMessage.style.padding = "5px";
+            botMessage.style.margin = "5px 0";
+            botMessage.style.borderRadius = "5px";
+            chatBox.appendChild(botMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
 }
