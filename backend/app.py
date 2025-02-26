@@ -40,7 +40,7 @@ def send_data():
     query = data["query"]
     
     res = get_llm_response(llm, query, chat_history)
-    chat_history = res['chat_history']
+    chat_history = res['chat_history']    # remove this comment to make conversation stateful
 
     return jsonify({"reply": res['response']})
     

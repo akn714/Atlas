@@ -52,13 +52,13 @@
     z-index: 10000 !important;
 }
 
-body {
+/* body {
     font-family: 'Arial', sans-serif !important;
     background-color: rgba(20, 20, 20, 0.9) !important;
     color: white !important;
     margin: 0 !important;
     padding: 0 !important;
-}
+} */
 
 #chat-container {
     position: fixed !important;
@@ -84,8 +84,19 @@ body {
 }
 
 #loading {
-    height: 40px;
-    width: 40px;
+    height: 40px !important;
+    width: 40px !important;
+}
+
+.bot-res{
+    line-height: 24px !important;
+    padding: 5px !important;
+    margin: 5px 0 !important;
+    border-radius: 5px !important;
+}
+
+.bot-res p {
+    color: #919191 !important;
 }
 
 #chat-input {
@@ -115,6 +126,7 @@ body {
 #model > p {
     width: 30%;
     margin: auto;
+    color: #a9a9a9;
 }
 
 #llm {

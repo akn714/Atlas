@@ -15,3 +15,15 @@ Instaknow is an AI productivity enhancing chrome extension.
 1. Providing code outputs that can be copied.
 2. Providing reference links with explinations.
 
+## Getting Started
+**Setting up the server**<br>
+1. Rename `.example.env` to `.env`
+2. Add all your API keys present in .env file
+3. Run the server
+    ```python
+    python3 app.py
+    ```
+
+**Adding the chrome-extension**<br>
+1. 
+

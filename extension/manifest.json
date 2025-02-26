@@ -23,7 +23,8 @@
       "resources": [
         "chat.html",
         "chat.css",
-        "chat.js"
+        "chat.js",
+        "loading.svg"
       ],
       "matches": [
         "<all_urls>"
