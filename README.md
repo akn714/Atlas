@@ -30,5 +30,5 @@ Atlas is an AI productivity enhancing chrome extension.
 3. Load the extension files
 
 **Usage**<br>
-- Use Ctrl+I to chat with Atals
-
+- Ctrl+I to chat with Atals
+- Ctrl+Shift+X to close the chat
