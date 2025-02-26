@@ -1,5 +1,5 @@
-# Instaknow
-Instaknow is an AI productivity enhancing chrome extension.
+# Atlas
+Atlas is an AI productivity enhancing chrome extension.
 
 ## Purpose
 1. It is a productivity enhancing tool to make searching for small things easy, fast and handy.
@@ -25,5 +25,10 @@ Instaknow is an AI productivity enhancing chrome extension.
     ```
 
 **Adding the chrome-extension**<br>
-1. 
+1. Go to 'chrome://extension'
+2. Turn on Developer mode
+3. Load the extension files
+
+**Usage**<br>
+- Use Ctrl+I to chat with Atals
 
