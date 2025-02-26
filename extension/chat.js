@@ -3,6 +3,7 @@ console.log('chat.js injected')
 if (document.getElementById("chat-input")) document.getElementById("chat-input").focus();
 
 let chatBox = document.getElementById("chat-box");
+let extensionID = 'naecmhohbacaemfgimepbafhcohkjbdg';
 
 document.getElementById("send-btn").addEventListener("click", sendMessage);
 document.getElementById("chat-input").addEventListener("keypress", function (event) {
@@ -10,6 +11,10 @@ document.getElementById("chat-input").addEventListener("keypress", function (eve
         sendMessage();
     }
 });
+
+// window.addEventListener('get-id', (event) => {
+//     if (event.source !== window || !event.data.type || event.data.type !== "get-id") return;
+// })
 
 window.addEventListener("message", (event) => {
     if (event.source !== window || !event.data.type || event.data.type !== "responseData") return;
@@ -46,7 +51,7 @@ function sendMessage() {
     input.value = "";
 
     let botMessage = document.createElement("div");
-    botMessage.innerHTML = '<img src="chrome-extension://naecmhohbacaemfgimepbafhcohkjbdg/loading.svg" id="loading" alt="loading">';
+    botMessage.innerHTML = `<img src="chrome-extension://${extensionID}/loading.svg" id="loading" alt="loading">`;
     botMessage.setAttribute('class', 'latest-bot-message');
     chatBox.appendChild(botMessage);
     chatBox.scrollTop = chatBox.scrollHeight;

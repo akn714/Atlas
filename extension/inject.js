@@ -19,3 +19,13 @@ if (!document.getElementById("chat-container")) {
     script.src = chrome.runtime.getURL("chat.js");
     document.body.appendChild(script);
 }
+
+document.addEventListener("keydown", function(event) {
+    // Detect "Ctrl + Shift + X" key combination
+    if (event.ctrlKey && event.shiftKey && event.key === "X") {
+        let chatContainer = document.getElementById("chat-div");
+        if (chatContainer) {
+            chatContainer.remove();  // Remove chat interface
+        }
+    }
+});
