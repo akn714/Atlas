@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "Atlas",
+  "version": "1.0",
+  "description": "AI Web Agent",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "atlas@yourdomain.com"
+    }
+  },
+  "browser_action": {
+    "default_icon": {
+      "128": "logos/logo.png"
+    },
+    "default_title": "Atlas"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "chat.html",
+        "chat.css",
+        "chat.js",
+        "loading.svg"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "commands": {
+    "start-chat": {
+      "suggested_key": {
+        "default": "Ctrl+I",
+        "mac": "Command+I"
+      },
+      "description": "Start chat"
+    }
+  }
+}
